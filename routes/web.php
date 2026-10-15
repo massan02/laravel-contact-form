@@ -13,6 +13,11 @@ Route::post('/', function (Request $request) {
         'name' => 'required',
         'email' => 'required|email',
         'body' => 'required',
+    ], [
+        'name.required' => '名前を入力してください',
+        'email.required' => 'メールを入力してください',
+        'email.email' => 'メールの形式が正しくありません',
+        'body.required' => 'お問い合わせ内容を入力してください',
     ]);
 
     Contact::create($request->only(['name', 'email', 'body']));
