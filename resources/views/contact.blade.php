@@ -11,17 +11,26 @@
         @csrf
         <div>
             <label for="name">名前</label>
-            <input id="name" name="name" required>
+            <input id="name" name="name" value="{{ old('name') }}" required>
+            @error('name')
+                <p>{{ $message }}</p>
+            @enderror
         </div>
 
         <div>
             <label for="email">メール</label>
-            <input id="email" name="email" type="email" required>
+            <input id="email" name="email" type="email" value="{{ old('email') }}" required>
+            @error('email')
+                <p>{{ $message }}</p>
+            @enderror
         </div>
 
         <div>
             <label for="body">お問い合わせ内容</label>
-            <textarea id="body" name="body" required></textarea>
+            <textarea id="body" name="body" required>{{ old('body') }}</textarea>
+            @error('body')
+                <p>{{ $message }}</p>
+            @enderror
         </div>
 
         <button type="submit">送信</button>
