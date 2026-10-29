@@ -22,15 +22,11 @@ Route::post('/', function (Request $request) {
 
     Contact::create($request->only(['name', 'email', 'body']));
 
-    return redirect()->route('complete');
-});
-
-Route::get('/complete', function () {
     return view('complete');
-})->name('complete');
+});
 
 Route::get('/list', function () {
     $contacts = Contact::latest()->get();
-
+    
     return view('list', ['contacts' => $contacts]);
 });
